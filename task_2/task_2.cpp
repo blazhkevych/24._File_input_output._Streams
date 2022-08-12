@@ -63,15 +63,20 @@ int main()
 	}
 	readSourceFile.close();
 	delete[] bufForDataPiece;
+	cout << "Файл разобран !" << endl;
 
 	char* resultBuffer = new char[onePieceSizeInBytes + 1]; // память под результирующий файл в размере заданной части файла
 
-	ofstream resultOfParts_write("1(copy).jpg", ios::binary | ios::out);
+	cout << "Введите путь к исходному файлу: "; // 1.jpg
+	string resultPath{};
+	cin >> resultPath;
+
+	ofstream resultOfParts_write(resultPath, ios::binary | ios::out);
 
 	for (int j = 0; j < countParts; j++)
 	{
 		char partName[50]{};
-		snprintf(partName, sizeof(partName), "file_%d.bin", j++);
+		snprintf(partName, sizeof(partName), "file_%d.bin", j);
 		ifstream read(partName, ios::binary | ios::in); // открывается  файл на чтение в бинарном режиме : при этом файл должен существовать
 
 		read.read(resultBuffer, onePieceSizeInBytes);
