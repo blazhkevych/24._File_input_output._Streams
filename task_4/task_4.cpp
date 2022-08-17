@@ -8,7 +8,7 @@
 	ГОТОВО
 */
 #include <iostream>
-#include<fstream>
+#include <fstream>
 #include <Windows.h>
 
 using namespace std;
